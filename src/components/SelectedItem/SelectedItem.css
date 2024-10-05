@@ -1,0 +1,27 @@
+.selected-item,
+.selected-item--detail-list {
+  list-style: none;
+  background-color: #eee;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #eee;
+  margin: 1rem;
+  border-radius: 6px;
+}
+
+.selected-item--item-title {
+  margin-bottom: 0.5rem;
+}
+
+.selected-item--item-name {
+  font-weight: bold;
+}
+
+.selected-item--detail-list {
+  padding: 0;
+  margin: 0;
+}
+
+.selected-item--detail-item {
+  margin: 0.5rem 0;
+}

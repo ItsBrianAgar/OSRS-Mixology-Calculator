@@ -1,0 +1,27 @@
+.selected-herb,
+.selected-herb--detail-list {
+  list-style: none;
+  background-color: #eee;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #eee;
+  margin: 1rem;
+  border-radius: 6px;
+}
+
+.selected-herb--item-title {
+  margin-bottom: 0.5rem;
+}
+
+.selected-herb--item-name {
+  font-weight: bold;
+}
+
+.selected-herb--detail-list {
+  padding: 0;
+  margin: 0;
+}
+
+.selected-herb--detail-item {
+  margin: 0.5rem 0;
+}

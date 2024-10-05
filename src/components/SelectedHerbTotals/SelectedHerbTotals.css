@@ -1,0 +1,21 @@
+.selected-herb-totals {
+  list-style: none;
+  background-color: #eee;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #ecf6d6;
+  margin: 1rem;
+  border-radius: 6px;
+}
+
+.selected-herb-totals--title {
+  margin-bottom: 1rem;
+}
+
+.selected-herb--item-name {
+  font-weight: bold;
+}
+
+.selected-herb-totals--detail-item {
+  margin: 0.5rem 0;
+}

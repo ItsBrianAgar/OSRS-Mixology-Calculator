@@ -1,0 +1,21 @@
+.selected-item-totals {
+  list-style: none;
+  background-color: #eee;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #ecf6d6;
+  margin: 1rem;
+  border-radius: 6px;
+}
+
+.selected-item-totals--title {
+  margin-bottom: 1rem;
+}
+
+.selected-item--item-name {
+  font-weight: bold;
+}
+
+.selected-item-totals--detail-item {
+  margin: 0.5rem 0;
+}

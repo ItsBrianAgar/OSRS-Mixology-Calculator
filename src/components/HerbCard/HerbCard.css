@@ -1,0 +1,8 @@
+.herb-card {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #eee;
+  margin: 1rem;
+  border-radius: 6px;
+  opacity: 0.5;
+}
