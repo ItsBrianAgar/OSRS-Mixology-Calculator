@@ -5,7 +5,7 @@ import "./App.css";
 import RewardSelection from "./components/RewardSelection/RewardSelection.jsx";
 import { rewards } from "./data/helper-data.js";
 import HerbloreConfiguration from "./components/HerbloreConfiguration/HerbloreConfiguration.jsx";
-import ResourceComparison from "./components/ResourceComparison/ResourceComparison.jsx";
+import ResourceCalculation from "./components/ResourceCalculation/ResourceCalculation.jsx";
 
 function App() {
   const [herbTotals, setHerbTotals] = useState({
@@ -42,6 +42,8 @@ function App() {
     setItemTotals(newTotals);
   };
 
+  const hasSelectedRewards = Object.keys(selectedItems).length > 0;
+
   return (
     <div className="App">
       <h1>Mixology Calculator</h1>
@@ -63,7 +65,11 @@ function App() {
         <HerbloreConfiguration updateHerbTotals={updateHerbTotals} />
       </section>
       <section className="calculation-results">
-        <ResourceComparison herbTotals={herbTotals} itemTotals={itemTotals} />
+        <ResourceCalculation
+          herbTotals={herbTotals}
+          itemTotals={itemTotals}
+          hasSelectedRewards={hasSelectedRewards}
+        />
       </section>
     </div>
   );
