@@ -3,12 +3,17 @@ import SelectedHerb from "../SelectedHerb/SelectedHerb";
 import { processHerbProducts } from "../../utils/herbProductProcessor";
 import "./SelectedHerbsList.css";
 
-function SelectedHerbsList({ selectedHerbs, herbsData }) {
+function SelectedHerbsList({
+  selectedHerbs,
+  herbsData,
+  preferredProducts,
+  blacklistedProducts,
+}) {
   const processedHerbs = processHerbProducts(
     selectedHerbs,
     herbsData,
-    [], // No blacklisted products
-    [] // No preferred products
+    blacklistedProducts,
+    preferredProducts
   );
 
   return (

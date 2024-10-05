@@ -6,6 +6,7 @@ import RewardSelection from "./components/RewardSelection/RewardSelection.jsx";
 import { rewards } from "./data/helper-data.js";
 import HerbloreConfiguration from "./components/HerbloreConfiguration/HerbloreConfiguration.jsx";
 import ResourceCalculation from "./components/ResourceCalculation/ResourceCalculation.jsx";
+import { ProductProvider } from "./context/ProductContext.js";
 
 function App() {
   const [herbTotals, setHerbTotals] = useState({
@@ -62,7 +63,9 @@ function App() {
         <hr></hr>
       </section>
       <section className="herbloreConfiguration">
-        <HerbloreConfiguration updateHerbTotals={updateHerbTotals} />
+        <ProductProvider>
+          <HerbloreConfiguration updateHerbTotals={updateHerbTotals} />
+        </ProductProvider>
       </section>
       <section className="calculation-results">
         <ResourceCalculation

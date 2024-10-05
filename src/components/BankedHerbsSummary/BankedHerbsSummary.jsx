@@ -2,12 +2,15 @@ import React, { useEffect } from "react";
 import "./BankedHerbsSummary.css";
 import SelectedHerbsList from "../SelectedHerbsList/SelectedHerbsList";
 import SelectedHerbTotals from "../SelectedHerbTotals/SelectedHerbTotals";
+import { useProductContext } from "../../context/ProductContext";
 
 export default function BankedHerbsSummary({
   selectedHerbs,
   herbsData,
   updateHerbTotals,
 }) {
+  const { preferredProducts, blacklistedProducts } = useProductContext();
+
   const calculateTotals = () => {
     let totalHerbs = 0;
     let totalMox = 0;
@@ -56,6 +59,8 @@ export default function BankedHerbsSummary({
           <SelectedHerbsList
             selectedHerbs={selectedHerbs}
             herbsData={herbsData}
+            preferredProducts={preferredProducts}
+            blacklistedProducts={blacklistedProducts}
           />
           <SelectedHerbTotals totals={totals} />
         </>
