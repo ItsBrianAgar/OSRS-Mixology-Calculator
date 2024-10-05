@@ -6,7 +6,7 @@ function SelectedItem({ item, quantity }) {
   return (
     <li className="selected-item">
       <p className="selected-item--item-title">
-        <span class="selected-item--item-name">{item.name}</span>:{" "}
+        <span className="selected-item--item-name">{item.name}</span>:{" "}
         {formatNumber(quantity)}
       </p>
       <ul className="selected-item--detail-list">

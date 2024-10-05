@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./HerbCard.css";
+import ItemIcon from "../ItemIcon/ItemIcon";
 
 function HerbCard({ herb, onSelect }) {
   const [isChecked, setIsChecked] = useState(false);
@@ -32,6 +33,7 @@ function HerbCard({ herb, onSelect }) {
         onChange={() => {}}
         onClick={(e) => e.stopPropagation()}
       />
+      <ItemIcon itemKey={herb.key} />
       <p>{herb.name}</p>
       <p className="herb-paste-type">{herb.pasteType} paste</p>{" "}
       {/* Paste type displayed here */}

@@ -1,14 +1,13 @@
 import React, { useState, useRef } from "react";
 import "./ItemCard.css";
+import ItemIcon from "../ItemIcon/ItemIcon";
 
 export default function ItemCard({ item, onSelect }) {
-  // State variables for managing the item's selection and quantity
   const [isChecked, setIsChecked] = useState(false);
   const [quantity, setQuantity] = useState(0);
   const [isInputActive, setIsInputActive] = useState(false);
   const inputRef = useRef(null);
 
-  // Handler for when the card is clicked
   const handleCardClick = () => {
     const newIsChecked = !isChecked;
     setIsChecked(newIsChecked);
@@ -17,7 +16,6 @@ export default function ItemCard({ item, onSelect }) {
     onSelect(item.key, newQuantity);
   };
 
-  // Handler for changes in the quantity input field
   const handleInputChange = (e) => {
     const newQuantity = parseInt(e.target.value) || 0;
     setQuantity(newQuantity);
@@ -25,7 +23,6 @@ export default function ItemCard({ item, onSelect }) {
     onSelect(item.key, newQuantity);
   };
 
-  // Handler for when the input field gains focus
   const handleInputFocus = () => {
     setIsInputActive(true);
     if (!isChecked) {
@@ -35,7 +32,6 @@ export default function ItemCard({ item, onSelect }) {
     }
   };
 
-  // Handler for when the input field loses focus
   const handleInputBlur = () => {
     setIsInputActive(false);
     if (quantity === 0) {
@@ -44,7 +40,6 @@ export default function ItemCard({ item, onSelect }) {
     }
   };
 
-  // Render the ItemCard component
   return (
     <div
       className={`rewardItemCard ${
@@ -52,7 +47,6 @@ export default function ItemCard({ item, onSelect }) {
       }`}
       onClick={handleCardClick}
     >
-      {/* Checkbox for item selection */}
       <input
         type="checkbox"
         className="selectionBox"
@@ -60,9 +54,10 @@ export default function ItemCard({ item, onSelect }) {
         onChange={() => {}}
         onClick={(e) => e.stopPropagation()}
       />
-      {/* Display item name */}
-      <p>{item.name}</p>
-      {/* Input field for quantity selection */}
+      <div className="itemIconWrapper">
+        <ItemIcon itemKey={item.key} />
+      </div>
+      <p className="itemName">{item.name}</p>
       <input
         ref={inputRef}
         type="number"
