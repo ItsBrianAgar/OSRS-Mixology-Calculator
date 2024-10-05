@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { herbloreProducts } from "../../data/herblore-product-list";
+// src/components/SearchOverlay/SearchOverlay.jsx
+
+import React from "react";
 import "./SearchOverlay.css";
+import ItemIcon from "../ItemIcon/ItemIcon";
+import { useHerbloreSearch } from "../../hooks/useHerbloreSearch";
 
 function SearchOverlay({ isVisible, onClose, onSelect }) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-
-  useEffect(() => {
-    if (searchTerm.trim().length > 0) {
-      // Remove duplicates based on the 'key' property
-      const uniqueProducts = Array.from(
-        new Set(herbloreProducts.map((p) => p.key))
-      ).map((key) => herbloreProducts.find((p) => p.key === key));
-
-      const results = uniqueProducts.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
-      );
-      setSearchResults(results);
-    } else {
-      setSearchResults([]);
-    }
-  }, [searchTerm]);
+  const { searchTerm, setSearchTerm, searchResults } = useHerbloreSearch();
 
   if (!isVisible) return null;
 
@@ -48,7 +34,19 @@ function SearchOverlay({ isVisible, onClose, onSelect }) {
                 setSearchTerm("");
               }}
             >
-              {product.name} (Herb: {product.herb}, XP: {product.xp})
+              <div className="search-result-icon">
+                {product.hasSprite ? (
+                  <ItemIcon itemKey={product.spriteKey} />
+                ) : (
+                  <div className="placeholder-icon"></div>
+                )}
+              </div>
+              <div className="search-result-info">
+                <span className="search-result-name">{product.name}</span>
+                <span className="search-result-details">
+                  Herb: {product.herb} | XP: {product.xp}
+                </span>
+              </div>
             </li>
           ))}
         </ul>
