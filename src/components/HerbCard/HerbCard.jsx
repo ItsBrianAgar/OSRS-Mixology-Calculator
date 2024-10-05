@@ -1,4 +1,3 @@
-// HerbCard.jsx
 import React, { useState } from "react";
 import "./HerbCard.css";
 
@@ -34,6 +33,8 @@ function HerbCard({ herb, onSelect }) {
         onClick={(e) => e.stopPropagation()}
       />
       <p>{herb.name}</p>
+      <p className="herb-paste-type">{herb.pasteType} paste</p>{" "}
+      {/* Paste type displayed here */}
       <input
         className="inputField"
         type="number"

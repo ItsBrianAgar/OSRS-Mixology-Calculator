@@ -6,3 +6,9 @@
   border-radius: 6px;
   opacity: 0.5;
 }
+
+.herb-paste-type {
+  font-size: 0.8em; /* Smaller font size */
+  color: #666; /* Lighter color for less emphasis */
+  margin-top: 4px; /* Space above the paste type */
+}
