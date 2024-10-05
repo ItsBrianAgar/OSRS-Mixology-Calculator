@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./BankedHerbsSummary.css";
 import SelectedHerbsList from "../SelectedHerbsList/SelectedHerbsList";
 import SelectedHerbTotals from "../SelectedHerbTotals/SelectedHerbTotals";
 
-export default function BankedHerbsSummary({ selectedHerbs, herbsData }) {
+export default function BankedHerbsSummary({
+  selectedHerbs,
+  herbsData,
+  updateHerbTotals,
+}) {
   const calculateTotals = () => {
     let totalHerbs = 0;
     let totalMox = 0;
@@ -37,6 +41,10 @@ export default function BankedHerbsSummary({ selectedHerbs, herbsData }) {
   };
 
   const totals = calculateTotals();
+
+  useEffect(() => {
+    updateHerbTotals(totals);
+  }, [selectedHerbs, updateHerbTotals]);
 
   return (
     <div className="banked-herbs-summary">

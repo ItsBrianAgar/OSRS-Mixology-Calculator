@@ -95,12 +95,4 @@ export const rewards = [
     lye: 480,
     totalResin: 1210,
   },
-  // {
-  //   key: "totals",
-  //   name: "Totals",
-  //   mox: 62140,
-  //   aga: 53440,
-  //   lye: 71170,
-  //   totalResin: 186750,
-  // },
 ];

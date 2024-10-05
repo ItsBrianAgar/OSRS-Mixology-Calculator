@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ChosenItemsSummary.css";
 import SelectedItemsList from "../SelectedItemsList/SelectedItemsList";
 import SelectedItemTotals from "../SelectedItemTotals/SelectedItemTotals";
 
-export default function ChosenItemsSummary({ selectedItems, rewardsData }) {
+export default function ChosenItemsSummary({
+  selectedItems,
+  rewardsData,
+  updateItemTotals,
+}) {
   const calculateTotals = () => {
     let totalMox = 0;
     let totalAga = 0;
@@ -24,6 +28,10 @@ export default function ChosenItemsSummary({ selectedItems, rewardsData }) {
   };
 
   const totals = calculateTotals();
+
+  useEffect(() => {
+    updateItemTotals(totals);
+  }, [selectedItems, updateItemTotals]);
 
   return (
     <div className="chosen-items-summary">
