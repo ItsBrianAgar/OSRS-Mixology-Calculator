@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import useDocumentMeta from "./hooks/useDocumentMeta.js";
 import favicon from "./images/favicons/huasca.png";
 import "./App.css";
@@ -14,17 +14,19 @@ function App() {
     totalAga: 0,
     totalLye: 0,
   });
+
   const [itemTotals, setItemTotals] = useState({
     totalMox: 0,
     totalAga: 0,
     totalLye: 0,
+    totalResin: 0,
   });
-
-  useDocumentMeta("OSRS | Mixology Calculator", favicon);
 
   const [selectedItems, setSelectedItems] = useState({});
 
-  const handleItemSelect = (itemKey, quantity) => {
+  useDocumentMeta("OSRS | Mixology Calculator", favicon);
+
+  const handleItemSelect = useCallback((itemKey, quantity) => {
     setSelectedItems((prevItems) => {
       if (quantity > 0) {
         return { ...prevItems, [itemKey]: quantity };
@@ -33,14 +35,20 @@ function App() {
         return rest;
       }
     });
-  };
+  }, []);
 
-  const updateHerbTotals = (newTotals) => {
+  const updateHerbTotals = useCallback((newTotals) => {
     setHerbTotals(newTotals);
-  };
+  }, []);
 
-  const updateItemTotals = (newTotals) => {
+  const updateItemTotals = useCallback((newTotals) => {
     setItemTotals(newTotals);
+  }, []);
+
+  const handleReset = () => {
+    setSelectedItems({});
+    setHerbTotals({ totalMox: 0, totalAga: 0, totalLye: 0 });
+    setItemTotals({ totalMox: 0, totalAga: 0, totalLye: 0, totalResin: 0 });
   };
 
   const hasSelectedRewards = Object.keys(selectedItems).length > 0;
@@ -60,7 +68,7 @@ function App() {
           rewardsData={rewards}
           updateItemTotals={updateItemTotals}
         />
-        <hr></hr>
+        <hr />
       </section>
       <section className="herbloreConfiguration">
         <ProductProvider>
@@ -74,6 +82,7 @@ function App() {
           hasSelectedRewards={hasSelectedRewards}
         />
       </section>
+      <button onClick={handleReset}>Reset All Data</button>
     </div>
   );
 }

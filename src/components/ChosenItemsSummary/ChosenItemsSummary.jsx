@@ -1,14 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useCallback } from "react";
 import "./ChosenItemsSummary.css";
 import SelectedItemsList from "../SelectedItemsList/SelectedItemsList";
 import SelectedItemTotals from "../SelectedItemTotals/SelectedItemTotals";
 
-export default function ChosenItemsSummary({
-  selectedItems,
-  rewardsData,
-  updateItemTotals,
-}) {
-  const calculateTotals = () => {
+function ChosenItemsSummary({ selectedItems, rewardsData, updateItemTotals }) {
+  const calculateTotals = useCallback(() => {
     let totalMox = 0;
     let totalAga = 0;
     let totalLye = 0;
@@ -25,13 +21,13 @@ export default function ChosenItemsSummary({
     });
 
     return { totalMox, totalAga, totalLye, totalResin };
-  };
+  }, [selectedItems, rewardsData]);
 
-  const totals = calculateTotals();
+  const totals = useMemo(() => calculateTotals(), [calculateTotals]);
 
   useEffect(() => {
     updateItemTotals(totals);
-  }, [selectedItems, updateItemTotals]);
+  }, [totals, updateItemTotals]);
 
   return (
     <div className="chosen-items-summary">
@@ -50,3 +46,5 @@ export default function ChosenItemsSummary({
     </div>
   );
 }
+
+export default React.memo(ChosenItemsSummary);
