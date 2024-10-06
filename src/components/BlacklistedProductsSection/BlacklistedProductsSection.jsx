@@ -19,7 +19,7 @@ function BlacklistedProductsSection() {
   );
 
   return (
-    <div className="blacklisted-products-section">
+    <section className="blacklisted-products-section">
       <h2>Blacklisted Products</h2>
       <p>List the herblore products you'd rather avoid making</p>
       <button
@@ -42,7 +42,7 @@ function BlacklistedProductsSection() {
         items={herbloreProducts}
         itemKey="name"
       />
-    </div>
+    </section>
   );
 }
 

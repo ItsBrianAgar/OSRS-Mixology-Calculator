@@ -19,7 +19,7 @@ function PreferredProductsSection() {
   );
 
   return (
-    <div className="preferred-products-section">
+    <section className="preferred-products-section">
       <h2>Preferred Products</h2>
       <p>List the herblore products you prefer making</p>
       <button
@@ -42,7 +42,7 @@ function PreferredProductsSection() {
         items={herbloreProducts}
         itemKey="name"
       />
-    </div>
+    </section>
   );
 }
 

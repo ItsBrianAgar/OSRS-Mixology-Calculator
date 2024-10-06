@@ -4,9 +4,6 @@ import spriteSheetImage from "../../images/sprite-sheet.png";
 import { spriteMap } from "../../utils/spriteMap";
 
 const ItemIcon = ({ itemKey }) => {
-  console.log("Rendering ItemIcon for:", itemKey);
-  console.log("SpriteMap entry:", spriteMap[itemKey]);
-
   if (!spriteMap[itemKey]) {
     console.warn(`No sprite position found for item key: ${itemKey}`);
     return (

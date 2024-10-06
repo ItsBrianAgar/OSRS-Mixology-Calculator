@@ -68,7 +68,6 @@ function App() {
           rewardsData={rewards}
           updateItemTotals={updateItemTotals}
         />
-        <hr />
       </section>
       <section className="herbloreConfiguration">
         <ProductProvider>
