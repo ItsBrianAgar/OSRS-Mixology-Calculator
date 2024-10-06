@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HerbCard.css";
 import ItemIcon from "../ItemIcon/ItemIcon";
+import { getItemColor } from "../../utils/colorUtils";
 
-function HerbCard({ herb, onSelect }) {
+function HerbCard({ herb, onSelect, colorsLoaded }) {
   const [isChecked, setIsChecked] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState("transparent");
   const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+    if (colorsLoaded) {
+      const color = getItemColor(herb.key);
+      console.log(herb.key, color);
+      setBackgroundColor(color);
+    }
+  }, [colorsLoaded, herb.key]);
 
   const handleCardClick = () => {
     const newIsChecked = !isChecked;
@@ -25,6 +35,7 @@ function HerbCard({ herb, onSelect }) {
     <div
       className={`herb-card ${isChecked ? "selected" : ""}`}
       onClick={handleCardClick}
+      style={{ backgroundColor }}
     >
       <input
         className="selectionBox"

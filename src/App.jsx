@@ -7,6 +7,8 @@ import { rewards } from "./data/helper-data.js";
 import HerbloreConfiguration from "./components/HerbloreConfiguration/HerbloreConfiguration.jsx";
 import ResourceCalculation from "./components/ResourceCalculation/ResourceCalculation.jsx";
 import { ProductProvider } from "./context/ProductContext.js";
+import spriteSheetImage from "../src/images/sprite-sheet.png";
+import { extractColors } from "./utils/colorUtils.js";
 
 function App() {
   const [herbTotals, setHerbTotals] = useState({
@@ -23,8 +25,21 @@ function App() {
   });
 
   const [selectedItems, setSelectedItems] = useState({});
+  const [colorsLoaded, setColorsLoaded] = useState(false);
 
   useDocumentMeta("OSRS | Mixology Calculator", favicon);
+
+  useEffect(() => {
+    async function loadColors() {
+      try {
+        await extractColors(spriteSheetImage);
+        setColorsLoaded(true);
+      } catch (error) {
+        setColorsLoaded(true); // Set to true even on error to allow app to render
+      }
+    }
+    loadColors();
+  }, []);
 
   const handleItemSelect = useCallback((itemKey, quantity) => {
     setSelectedItems((prevItems) => {
@@ -45,13 +60,17 @@ function App() {
     setItemTotals(newTotals);
   }, []);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setSelectedItems({});
     setHerbTotals({ totalMox: 0, totalAga: 0, totalLye: 0 });
     setItemTotals({ totalMox: 0, totalAga: 0, totalLye: 0, totalResin: 0 });
-  };
+  }, []);
 
   const hasSelectedRewards = Object.keys(selectedItems).length > 0;
+
+  if (!colorsLoaded) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="App">
@@ -67,11 +86,15 @@ function App() {
           selectedItems={selectedItems}
           rewardsData={rewards}
           updateItemTotals={updateItemTotals}
+          colorsLoaded={colorsLoaded}
         />
       </section>
       <section className="herbloreConfiguration">
         <ProductProvider>
-          <HerbloreConfiguration updateHerbTotals={updateHerbTotals} />
+          <HerbloreConfiguration
+            updateHerbTotals={updateHerbTotals}
+            colorsLoaded={colorsLoaded}
+          />
         </ProductProvider>
       </section>
       <section className="calculation-results">
