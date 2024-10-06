@@ -3,6 +3,7 @@ import SearchOverlay from "../SearchOverlay/SearchOverlay";
 import { herbloreProducts } from "../../data/herblore-product-list";
 import usePreferredProducts from "../../hooks/usePreferredProducts";
 import "./PreferredProductsSection.css";
+import { capitalizeWords } from "../../utils/capitaliseWord";
 
 function PreferredProductsSection() {
   const [showSearchOverlay, setShowSearchOverlay] = useState(false);
@@ -67,7 +68,8 @@ function PreferredProductItem({ product, onRemove }) {
   return (
     <li className="preferred-product-item">
       <span>
-        {product.name} (Herb: {product.herb}, XP: {product.xp})
+        {product.name} ({capitalizeWords(product.ingredientType)}:{" "}
+        {product.primaryIngredient}, XP: {product.xp})
       </span>
       <button onClick={() => onRemove(product.key)}>Remove</button>
     </li>

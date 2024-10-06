@@ -1,9 +1,8 @@
-// src/components/SearchOverlay/SearchOverlay.jsx
-
 import React from "react";
 import "./SearchOverlay.css";
 import ItemIcon from "../ItemIcon/ItemIcon";
 import { useHerbloreSearch } from "../../hooks/useHerbloreSearch";
+import { capitalizeWords } from "../../utils/capitaliseWord";
 
 function SearchOverlay({ isVisible, onClose, onSelect }) {
   const { searchTerm, setSearchTerm, searchResults } = useHerbloreSearch();
@@ -44,7 +43,10 @@ function SearchOverlay({ isVisible, onClose, onSelect }) {
               <div className="search-result-info">
                 <span className="search-result-name">{product.name}</span>
                 <span className="search-result-details">
-                  Herb: {product.herb}
+                  {capitalizeWords(product.ingredientType)}:{" "}
+                  {Array.isArray(product.primaryIngredient)
+                    ? product.primaryIngredient.join(", ")
+                    : product.primaryIngredient}
                 </span>
               </div>
             </li>

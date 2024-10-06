@@ -3,6 +3,7 @@ import SearchOverlay from "../SearchOverlay/SearchOverlay";
 import { herbloreProducts } from "../../data/herblore-product-list";
 import useBlacklistedProducts from "../../hooks/useBlacklistedProducts";
 import "./BlacklistedProductsSection.css";
+import { capitalizeWords } from "../../utils/capitaliseWord";
 
 function BlacklistedProductsSection() {
   const [showSearchOverlay, setShowSearchOverlay] = useState(false);
@@ -66,7 +67,8 @@ function BlacklistedProductItem({ product, onRemove }) {
   return (
     <li className="blacklisted-product-item">
       <span>
-        {product.name} (Herb: {product.herb}, XP: {product.xp})
+        {product.name} ({capitalizeWords(product.ingredientType)}:{" "}
+        {product.primaryIngredient}, XP: {product.xp})
       </span>
       <button onClick={() => onRemove(product.key)}>Remove</button>
     </li>

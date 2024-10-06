@@ -77,7 +77,7 @@ export const herbs = [
     pasteYield: 30,
     herbloreXP: 255,
     products: [
-      { name: "Super attack potion", xp: 100 },
+      { name: "Super attack", xp: 100 },
       { name: "Superantipoison", xp: 106.3 },
       { name: "Irit tar", xp: 85 },
     ],
@@ -90,7 +90,7 @@ export const herbs = [
     herbloreXP: 375,
     products: [
       { name: "Fishing potion", xp: 112.5 },
-      { name: "Super energy potion", xp: 117.5 },
+      { name: "Super energy", xp: 117.5 },
       { name: "Hunter potion", xp: 120 },
     ],
   },
@@ -101,7 +101,7 @@ export const herbs = [
     pasteYield: 33,
     herbloreXP: 412.5,
     products: [
-      { name: "Super strength potion", xp: 125 },
+      { name: "Super strength", xp: 125 },
       { name: "Weapon poison", xp: 137.5 },
     ],
   },
