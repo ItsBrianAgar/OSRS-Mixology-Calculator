@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useDocumentMeta from "./hooks/useDocumentMeta.js";
 import favicon from "./images/favicons/huasca.png";
-import "./App.css";
+import "./App.scss";
 import RewardSelection from "./components/RewardSelection/RewardSelection.jsx";
 import { rewards } from "./data/helper-data.js";
 import HerbloreConfiguration from "./components/HerbloreConfiguration/HerbloreConfiguration.jsx";
