@@ -31,6 +31,9 @@ function ResourceCalculation({ herbTotals, itemTotals, hasSelectedRewards }) {
     return "exact";
   };
 
+  const isAllPasteCovered =
+    moxDifference >= 0 && agaDifference >= 0 && lyeDifference >= 0;
+
   return (
     <div className="resource-calculation">
       <h4 className="resource-calculation--title">Resource Calculation:</h4>
@@ -70,6 +73,11 @@ function ResourceCalculation({ herbTotals, itemTotals, hasSelectedRewards }) {
           {getStatusMessage(lyeDifference)}
         </span>
       </p>
+      {isAllPasteCovered && (
+        <p className="resource-calculation--success-message">
+          All paste costs for rewards are covered!
+        </p>
+      )}
     </div>
   );
 }

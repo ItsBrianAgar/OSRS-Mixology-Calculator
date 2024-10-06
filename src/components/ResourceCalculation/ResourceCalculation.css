@@ -1,37 +1,3 @@
-/* .resource-comparison {
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.resource-comparison--title {
-  margin-bottom: 10px;
-}
-
-.resource-comparison--detail-item {
-  margin: 10px 0;
-  padding: 5px;
-  border-radius: 3px;
-}
-
-.resource-comparison--detail-item.sufficient {
-  background-color: #ecf6d6;
-}
-
-.resource-comparison--detail-item.insufficient {
-  background-color: #ffe6e6;
-}
-
-.resource-comparison--detail-item.exact {
-  background-color: #e6e6e6;
-}
-
-.status-message {
-  font-size: 0.9em;
-  font-style: italic;
-} */
-
 .resource-calculation {
   margin-top: 20px;
   padding: 10px;
@@ -64,4 +30,13 @@
 .status-message {
   font-size: 0.9em;
   font-style: italic;
+}
+
+.resource-calculation--success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #e6ffe6;
+  border-radius: 5px;
 }

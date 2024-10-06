@@ -44,11 +44,11 @@ function SearchOverlay({ isVisible, onClose, onSelect }) {
               <div className="search-result-info">
                 <span className="search-result-name">{product.name}</span>
                 <span className="search-result-details">
-                  Herb: {product.herb} | XP: {product.xp}
+                  Herb: {product.herb}
                 </span>
               </div>
             </li>
-          ))}
+          ))}{" "}
         </ul>
         {searchResults.length === 0 && searchTerm.trim() !== "" && (
           <p>No results found</p>

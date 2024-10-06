@@ -21,7 +21,12 @@ function BlacklistedProductsSection() {
     <div className="blacklisted-products-section">
       <h2>Blacklisted Products</h2>
       <p>List the herblore products you'd rather avoid making</p>
-      <button onClick={() => setShowSearchOverlay(true)}>Add Product</button>
+      <button
+        className="button--secondary"
+        onClick={() => setShowSearchOverlay(true)}
+      >
+        Add Product
+      </button>
       {message && (
         <div className={`message ${message.type}`}>{message.text}</div>
       )}

@@ -82,7 +82,6 @@ function App() {
           hasSelectedRewards={hasSelectedRewards}
         />
       </section>
-      <button onClick={handleReset}>Reset All Data</button>
     </div>
   );
 }

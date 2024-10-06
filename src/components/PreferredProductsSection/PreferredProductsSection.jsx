@@ -21,7 +21,12 @@ function PreferredProductsSection() {
     <div className="preferred-products-section">
       <h2>Preferred Products</h2>
       <p>List the herblore products you prefer making</p>
-      <button onClick={() => setShowSearchOverlay(true)}>Add Product</button>
+      <button
+        className="button--secondary"
+        onClick={() => setShowSearchOverlay(true)}
+      >
+        Add Product
+      </button>
       {message && (
         <div className={`message ${message.type}`}>{message.text}</div>
       )}
