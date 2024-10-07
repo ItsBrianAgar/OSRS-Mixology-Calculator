@@ -3,7 +3,7 @@ import HerbCardList from "../HerbCardList/HerbCardList";
 import BankedHerbsSummary from "../BankedHerbsSummary/BankedHerbsSummary";
 import { herbs } from "../../data/helper-data";
 
-function BankedHerbsSection({ updateHerbTotals }) {
+function BankedHerbsSection({ updateHerbTotals, colorsLoaded }) {
   const [selectedHerbs, setSelectedHerbs] = useState({});
 
   const handleHerbSelect = (herbKey, quantity) => {
@@ -21,7 +21,11 @@ function BankedHerbsSection({ updateHerbTotals }) {
     <div className="banked-herbs-section">
       <h2>Banked Herbs</h2>
       <p>Log the herbs you have banked</p>
-      <HerbCardList onHerbSelect={handleHerbSelect} herbsData={herbs} />
+      <HerbCardList
+        onHerbSelect={handleHerbSelect}
+        herbsData={herbs}
+        colorsLoaded={colorsLoaded}
+      />
       <BankedHerbsSummary
         selectedHerbs={selectedHerbs}
         herbsData={herbs}
