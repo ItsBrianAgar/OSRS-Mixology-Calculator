@@ -2,7 +2,12 @@ import React from "react";
 import { formatNumber } from "../../utils/numberFormatter";
 import "./ResourceCalculation.css";
 
-function ResourceCalculation({ herbTotals, itemTotals, hasSelectedRewards }) {
+function ResourceCalculation({
+  herbTotals,
+  pasteTotals,
+  itemTotals,
+  hasSelectedRewards,
+}) {
   if (!hasSelectedRewards) {
     return (
       <div className="resource-calculation">
@@ -11,9 +16,12 @@ function ResourceCalculation({ herbTotals, itemTotals, hasSelectedRewards }) {
     );
   }
 
-  const moxDifference = herbTotals.totalMox - itemTotals.totalMox;
-  const agaDifference = herbTotals.totalAga - itemTotals.totalAga;
-  const lyeDifference = herbTotals.totalLye - itemTotals.totalLye;
+  const moxDifference =
+    herbTotals.totalMox + pasteTotals.totalMox - itemTotals.totalMox;
+  const agaDifference =
+    herbTotals.totalAga + pasteTotals.totalAga - itemTotals.totalAga;
+  const lyeDifference =
+    herbTotals.totalLye + pasteTotals.totalLye - itemTotals.totalLye;
 
   const getStatusMessage = (difference) => {
     if (difference > 0) {
@@ -42,8 +50,8 @@ function ResourceCalculation({ herbTotals, itemTotals, hasSelectedRewards }) {
           moxDifference
         )}`}
       >
-        Mox: {formatNumber(herbTotals.totalMox)} (Required:{" "}
-        {formatNumber(itemTotals.totalMox)})
+        Mox: {formatNumber(herbTotals.totalMox + pasteTotals.totalMox)}{" "}
+        (Required: {formatNumber(itemTotals.totalMox)})
         <br />
         <span className="status-message">
           {getStatusMessage(moxDifference)}
@@ -54,8 +62,8 @@ function ResourceCalculation({ herbTotals, itemTotals, hasSelectedRewards }) {
           agaDifference
         )}`}
       >
-        Aga: {formatNumber(herbTotals.totalAga)} (Required:{" "}
-        {formatNumber(itemTotals.totalAga)})
+        Aga: {formatNumber(herbTotals.totalAga + pasteTotals.totalAga)}{" "}
+        (Required: {formatNumber(itemTotals.totalAga)})
         <br />
         <span className="status-message">
           {getStatusMessage(agaDifference)}
@@ -66,8 +74,8 @@ function ResourceCalculation({ herbTotals, itemTotals, hasSelectedRewards }) {
           lyeDifference
         )}`}
       >
-        Lye: {formatNumber(herbTotals.totalLye)} (Required:{" "}
-        {formatNumber(itemTotals.totalLye)})
+        Lye: {formatNumber(herbTotals.totalLye + pasteTotals.totalLye)}{" "}
+        (Required: {formatNumber(itemTotals.totalLye)})
         <br />
         <span className="status-message">
           {getStatusMessage(lyeDifference)}

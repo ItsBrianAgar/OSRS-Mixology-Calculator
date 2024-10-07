@@ -57,16 +57,3 @@
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-
-.close-button {
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.close-button:hover {
-  background-color: #e0e0e0;
-}

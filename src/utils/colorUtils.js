@@ -2,12 +2,26 @@ import ColorThief from "color-thief-browser";
 import { spriteMap } from "./spriteMap";
 
 const colorCache = new Map();
+const vibrantColorCache = new Map();
 
-const createDarkerShade = (color, darkenFactor = 0.2) => {
-  const r = Math.round(color[0] * (1 - darkenFactor));
-  const g = Math.round(color[1] * (1 - darkenFactor));
-  const b = Math.round(color[2] * (1 - darkenFactor));
+const createDarkerShade = (color, darkenFactor = 0.4) => {
+  const r = Math.round(color[0] * (1 + darkenFactor));
+  const g = Math.round(color[1] * (1 + darkenFactor));
+  const b = Math.round(color[2] * (1 + darkenFactor));
+
   return [r, g, b];
+};
+
+const createVibrantColor = (color) => {
+  const [h, s, l] = rgbToHsl(...color);
+
+  // Increase saturation
+  const newSaturation = Math.min(s * 4, 1);
+
+  // Increase lightness, but keep it in a reasonable range
+  const newLightness = Math.min(Math.max(l * 0.8, 0.1), 0.25);
+
+  return hslToRgb(h, newSaturation, newLightness);
 };
 
 export const extractColors = async (spriteSheetImage) => {
@@ -36,8 +50,13 @@ export const extractColors = async (spriteSheetImage) => {
           });
 
           const darkerShade = createDarkerShade(vibrantColor);
+          const moreVibrantColor = createVibrantColor(vibrantColor);
+
           const colorString = `rgba(${darkerShade[0]}, ${darkerShade[1]}, ${darkerShade[2]}, 0.15)`;
+          const vibrantColorString = `rgb(${moreVibrantColor[0]}, ${moreVibrantColor[1]}, ${moreVibrantColor[2]})`;
+
           colorCache.set(key, colorString);
+          vibrantColorCache.set(key, vibrantColorString);
         });
         resolve();
       } catch (error) {
@@ -52,6 +71,11 @@ export const extractColors = async (spriteSheetImage) => {
 export const getItemColor = (itemKey) => {
   const color = colorCache.get(itemKey);
   return color || "transparent";
+};
+
+export const getItemVibrantColor = (itemKey) => {
+  const vibrantColor = vibrantColorCache.get(itemKey);
+  return vibrantColor || "rgb(82, 6, 57)"; // Fallback color
 };
 
 function rgbToHsl(r, g, b) {
@@ -84,4 +108,29 @@ function rgbToHsl(r, g, b) {
   }
 
   return [h, s, l];
+}
+
+function hslToRgb(h, s, l) {
+  let r, g, b;
+
+  if (s === 0) {
+    r = g = b = l; // achromatic
+  } else {
+    const hue2rgb = (p, q, t) => {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    };
+
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1 / 3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1 / 3);
+  }
+
+  return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }

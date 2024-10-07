@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./ItemCard.css";
 import ItemIcon from "../ItemIcon/ItemIcon";
-import { getItemColor } from "../../utils/colorUtils";
+import { getItemColor, getItemVibrantColor } from "../../utils/colorUtils";
 
 export default function ItemCard({
   item,
@@ -11,15 +11,18 @@ export default function ItemCard({
 }) {
   const [isChecked, setIsChecked] = useState(quantity > 0);
   const [isInputActive, setIsInputActive] = useState(false);
-  const [backgroundColor, setBackgroundColor] = useState("transparent");
+  const [backgroundColor, setBackgroundColor] = useState("#eee");
+  const [titleColor, setTitleColor] = useState("black");
   const [inputValue, setInputValue] = useState(quantity.toString());
   const inputRef = useRef(null);
   const cardRef = useRef(null);
 
   useEffect(() => {
     if (colorsLoaded) {
-      const color = getItemColor(item.key);
-      setBackgroundColor(color);
+      const cardBackgroundColor = getItemColor(item.key);
+      const cardTitleColor = getItemVibrantColor(item.key);
+      setBackgroundColor(cardBackgroundColor);
+      setTitleColor(cardTitleColor);
     }
   }, [colorsLoaded, item.key]);
 
@@ -65,6 +68,14 @@ export default function ItemCard({
     }
   };
 
+  const cardStyle = {
+    backgroundColor: isChecked ? backgroundColor : "#eee",
+  };
+
+  const titleStyle = {
+    color: isChecked ? titleColor : "black",
+  };
+
   return (
     <div
       ref={cardRef}
@@ -72,7 +83,7 @@ export default function ItemCard({
         isChecked || isInputActive ? "selected" : ""
       }`}
       onClick={handleCardClick}
-      style={{ backgroundColor }}
+      style={cardStyle}
     >
       <input
         type="checkbox"
@@ -84,7 +95,9 @@ export default function ItemCard({
       <div className="itemIconWrapper">
         <ItemIcon itemKey={item.key} />
       </div>
-      <p className="itemName">{item.name}</p>
+      <p style={titleStyle} className="item-card--title">
+        {item.name}
+      </p>
       <input
         ref={inputRef}
         type="number"

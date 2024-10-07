@@ -1,16 +1,26 @@
 import React, { useState, useEffect, useCallback } from "react";
-import useDocumentMeta from "./hooks/useDocumentMeta.js";
-import favicon from "./images/favicons/huasca.png";
 import "./App.scss";
+// Components
 import RewardSelection from "./components/RewardSelection/RewardSelection.jsx";
-import { rewards } from "./data/helper-data.js";
 import HerbloreConfiguration from "./components/HerbloreConfiguration/HerbloreConfiguration.jsx";
 import ResourceCalculation from "./components/ResourceCalculation/ResourceCalculation.jsx";
+// Utils
+import useDocumentMeta from "./hooks/useDocumentMeta.js";
+import { rewards } from "./data/helper-data.js";
 import { ProductProvider } from "./context/ProductContext.js";
-import spriteSheetImage from "../src/images/sprite-sheet.png";
 import { extractColors } from "./utils/colorUtils.js";
+// Images
+import favicon from "./images/favicons/huasca.png";
+import spriteSheetImage from "../src/images/sprite-sheet.png";
+import BankedPastesSection from "./components/BankedPastesSection/BankedPastesSection.jsx";
 
 function App() {
+  const [pasteTotals, setPasteTotals] = useState({
+    totalMox: 0,
+    totalAga: 0,
+    totalLye: 0,
+  });
+
   const [herbTotals, setHerbTotals] = useState({
     totalMox: 0,
     totalAga: 0,
@@ -28,6 +38,10 @@ function App() {
   const [colorsLoaded, setColorsLoaded] = useState(false);
 
   useDocumentMeta("OSRS | Mixology Calculator", favicon);
+
+  const updatePasteTotals = useCallback((newTotals) => {
+    setPasteTotals(newTotals);
+  }, []);
 
   useEffect(() => {
     async function loadColors() {
@@ -97,9 +111,16 @@ function App() {
           />
         </ProductProvider>
       </section>
+      <section className="bankedPastesSection">
+        <BankedPastesSection
+          updatePasteTotals={updatePasteTotals}
+          colorsLoaded={colorsLoaded}
+        />
+      </section>
       <section className="calculation-results">
         <ResourceCalculation
           herbTotals={herbTotals}
+          pasteTotals={pasteTotals}
           itemTotals={itemTotals}
           hasSelectedRewards={hasSelectedRewards}
         />
