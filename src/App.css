@@ -1,0 +1,88 @@
+.App {
+  max-width: 1000px;
+  width: (calc 100% - (1rem * 2));
+  margin: 2rem auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+section {
+  margin: 4rem 0;
+}
+
+.button--primary {
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 0.5rem;
+  border: none;
+  background: rgb(63, 156, 77);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1), 0px 2px 1rem rgba(0, 0, 0, 0.1);
+
+  color: #fff;
+  font-family: Inter;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 140%;
+
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.button--primary:hover {
+  background: rgb(64, 122, 73);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3), 0px 2px 1rem rgba(0, 0, 0, 0.3);
+}
+
+.section-seperator {
+  opacity: 0.1;
+  margin: 4rem 0;
+}
+
+.selectionBox {
+  display: none;
+  margin: 1rem;
+}
+
+.inputField {
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+}
+
+.selected {
+  opacity: 1 !important;
+}
+
+.grey-text {
+  color: #666;
+}
+
+.local-section-header {
+  margin-bottom: 2rem;
+}
+
+.chosen-items-summary-wrapper {
+  margin: 2rem 0;
+}
+
+h1,
+h2,
+h3 {
+  color: rgb(21, 72, 28);
+}
+
+.product-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.product-details > p {
+  font-size: 1rem;
+  color: #000;
+}

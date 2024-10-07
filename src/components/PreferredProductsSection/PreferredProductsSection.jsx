@@ -4,6 +4,7 @@ import { herbloreProducts } from "../../data/herblore-product-list";
 import usePreferredProducts from "../../hooks/usePreferredProducts";
 import "./PreferredProductsSection.css";
 import { capitalizeWords } from "../../utils/capitaliseWord";
+import ItemIcon from "../ItemIcon/ItemIcon";
 
 function PreferredProductsSection() {
   const [showSearchOverlay, setShowSearchOverlay] = useState(false);
@@ -20,10 +21,12 @@ function PreferredProductsSection() {
 
   return (
     <section className="preferred-products-section">
-      <h2>Preferred Products</h2>
-      <p>List the herblore products you prefer making</p>
+      <div className="local-section-header">
+        <h2>Preferred Products</h2>
+        <p>List the herblore products you prefer making</p>
+      </div>
       <button
-        className="button--secondary"
+        className="button--primary"
         onClick={() => setShowSearchOverlay(true)}
       >
         Add Product
@@ -48,7 +51,7 @@ function PreferredProductsSection() {
 
 function PreferredProductsList({ products, onRemove }) {
   if (!products || products.length === 0) {
-    return <p>No preferred products yet.</p>;
+    return <p className="grey-text">No preferred products yet.</p>;
   }
 
   return (
@@ -67,10 +70,13 @@ function PreferredProductsList({ products, onRemove }) {
 function PreferredProductItem({ product, onRemove }) {
   return (
     <li className="preferred-product-item">
-      <span>
-        {product.name} ({capitalizeWords(product.ingredientType)}:{" "}
-        {product.primaryIngredient}, XP: {product.xp})
-      </span>
+      <div className="product-details">
+        <ItemIcon itemKey={product.spriteKey} />
+        <p>
+          {product.name} ({capitalizeWords(product.ingredientType)}:{" "}
+          {product.primaryIngredient})
+        </p>
+      </div>
       <button onClick={() => onRemove(product.key)}>Remove</button>
     </li>
   );

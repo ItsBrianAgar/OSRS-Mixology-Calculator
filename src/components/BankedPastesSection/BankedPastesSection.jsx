@@ -33,7 +33,7 @@ function BankedPastesSection({ updatePasteTotals, colorsLoaded }) {
 
   return (
     <div className="banked-pastes-section">
-      <h2>Banked Pastes</h2>
+      <h2>What pastes do you have?</h2>
       <p>Log the pastes you have banked</p>
       <BankedPasteList
         onPasteSelect={handlePasteSelect}

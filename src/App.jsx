@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import "./App.scss";
+import "./App.css";
 // Components
 import RewardSelection from "./components/RewardSelection/RewardSelection.jsx";
 import HerbloreConfiguration from "./components/HerbloreConfiguration/HerbloreConfiguration.jsx";
@@ -10,11 +10,14 @@ import { rewards } from "./data/helper-data.js";
 import { ProductProvider } from "./context/ProductContext.js";
 import { extractColors } from "./utils/colorUtils.js";
 // Images
-import favicon from "./images/favicons/huasca.png";
+import favicon from "./images//favicons/huasca.png";
 import spriteSheetImage from "../src/images/sprite-sheet.png";
 import BankedPastesSection from "./components/BankedPastesSection/BankedPastesSection.jsx";
+import PageHeader from "./components/PageHeader/PageHeader.jsx";
 
 function App() {
+  useDocumentMeta("OSRS | Mixology Calculator", favicon);
+
   const [pasteTotals, setPasteTotals] = useState({
     totalMox: 0,
     totalAga: 0,
@@ -36,8 +39,6 @@ function App() {
 
   const [selectedItems, setSelectedItems] = useState({});
   const [colorsLoaded, setColorsLoaded] = useState(false);
-
-  useDocumentMeta("OSRS | Mixology Calculator", favicon);
 
   const updatePasteTotals = useCallback((newTotals) => {
     setPasteTotals(newTotals);
@@ -88,7 +89,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Mixology Calculator</h1>
+      <PageHeader />
       <section className="itemsUserWants">
         <h2>What items do you want?</h2>
         <p>

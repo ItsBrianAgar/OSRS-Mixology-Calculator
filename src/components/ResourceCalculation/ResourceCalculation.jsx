@@ -50,8 +50,9 @@ function ResourceCalculation({
           moxDifference
         )}`}
       >
-        Mox: {formatNumber(herbTotals.totalMox + pasteTotals.totalMox)}{" "}
-        (Required: {formatNumber(itemTotals.totalMox)})
+        <span className="resource-calculation--detail-name">Mox:</span>{" "}
+        {formatNumber(herbTotals.totalMox + pasteTotals.totalMox)} (Required:{" "}
+        {formatNumber(itemTotals.totalMox)})
         <br />
         <span className="status-message">
           {getStatusMessage(moxDifference)}

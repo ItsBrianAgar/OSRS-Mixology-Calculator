@@ -17,6 +17,11 @@
   border-radius: 5px;
 }
 
+.preferred-product-item > button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
 .message {
   padding: 10px;
   margin: 10px 0;

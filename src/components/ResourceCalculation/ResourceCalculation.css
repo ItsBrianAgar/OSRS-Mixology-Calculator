@@ -10,9 +10,9 @@
 }
 
 .resource-calculation--detail-item {
-  margin: 10px 0;
-  padding: 5px;
-  border-radius: 3px;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .resource-calculation--detail-item.sufficient {
@@ -20,7 +20,7 @@
 }
 
 .resource-calculation--detail-item.insufficient {
-  background-color: #ffe6e6; /* Pale red */
+  background-color: #feebeb; /* Pale red */
 }
 
 .resource-calculation--detail-item.exact {
@@ -28,8 +28,11 @@
 }
 
 .status-message {
+  display: inline-block;
   font-size: 0.9em;
   font-style: italic;
+  margin-top: 0.5rem;
+  color: #666;
 }
 
 .resource-calculation--success-message {

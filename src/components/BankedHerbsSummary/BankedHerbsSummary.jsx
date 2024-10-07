@@ -53,7 +53,7 @@ export default function BankedHerbsSummary({
     <div className="banked-herbs-summary">
       <h3>Banked Herbs Summary:</h3>
       {Object.keys(selectedHerbs).length === 0 ? (
-        <p>No herbs selected yet.</p>
+        <p className="grey-text">No herbs selected yet.</p>
       ) : (
         <>
           <SelectedHerbsList

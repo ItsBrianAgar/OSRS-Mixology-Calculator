@@ -19,7 +19,7 @@ function BankedHerbsSection({ updateHerbTotals, colorsLoaded }) {
 
   return (
     <div className="banked-herbs-section">
-      <h2>Banked Herbs</h2>
+      <h2>What herbs do you have?</h2>
       <p>Log the herbs you have banked</p>
       <HerbCardList
         onHerbSelect={handleHerbSelect}

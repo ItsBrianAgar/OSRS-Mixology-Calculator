@@ -4,6 +4,7 @@ import { herbloreProducts } from "../../data/herblore-product-list";
 import useBlacklistedProducts from "../../hooks/useBlacklistedProducts";
 import "./BlacklistedProductsSection.css";
 import { capitalizeWords } from "../../utils/capitaliseWord";
+import ItemIcon from "../ItemIcon/ItemIcon";
 
 function BlacklistedProductsSection() {
   const [showSearchOverlay, setShowSearchOverlay] = useState(false);
@@ -20,10 +21,12 @@ function BlacklistedProductsSection() {
 
   return (
     <section className="blacklisted-products-section">
-      <h2>Blacklisted Products</h2>
-      <p>List the herblore products you'd rather avoid making</p>
+      <div className="local-section-header">
+        <h2>Blacklisted Products</h2>
+        <p>List the herblore products you'd rather avoid making</p>
+      </div>
       <button
-        className="button--secondary"
+        className="button--primary"
         onClick={() => setShowSearchOverlay(true)}
       >
         Add Product
@@ -48,7 +51,7 @@ function BlacklistedProductsSection() {
 
 function BlacklistedProductsList({ products, onRemove }) {
   if (!products || products.length === 0)
-    return <p>No products blacklisted yet.</p>;
+    return <p className="grey-text">No products blacklisted yet.</p>;
 
   return (
     <ul className="blacklisted-products-list">
@@ -66,10 +69,13 @@ function BlacklistedProductsList({ products, onRemove }) {
 function BlacklistedProductItem({ product, onRemove }) {
   return (
     <li className="blacklisted-product-item">
-      <span>
-        {product.name} ({capitalizeWords(product.ingredientType)}:{" "}
-        {product.primaryIngredient}, XP: {product.xp})
-      </span>
+      <div className="product-details">
+        <ItemIcon itemKey={product.spriteKey} />
+        <p>
+          {product.name} ({capitalizeWords(product.ingredientType)}:{" "}
+          {product.primaryIngredient})
+        </p>
+      </div>
       <button onClick={() => onRemove(product.key)}>Remove</button>
     </li>
   );

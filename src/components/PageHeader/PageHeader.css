@@ -1,0 +1,53 @@
+.page-header {
+  width: (calc 100% - (4rem * 2));
+  padding: 4rem;
+  background-color: #5baf67;
+  border-radius: 1rem;
+  background-image: url("../../images/pattern-4-min.png");
+  background-blend-mode: soft-light;
+  background-position: bottom right;
+  background-size: cover;
+  box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.05),
+    0px 0.5rem 1rem rgba(0, 0, 0, 0.05);
+  transition: box-shadow 300ms ease-in-out;
+}
+
+.page-header:hover {
+  box-shadow: 0px 2rem 4rem rgba(0, 0, 0, 0.1), 0px 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.page-description {
+  font-size: 1.25rem;
+  line-height: 140%;
+  color: rgba(254, 254, 254, 0.8);
+  max-width: 40ch;
+}
+
+.rewardItemCard,
+.herb-card,
+.paste-card {
+  cursor: pointer;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputField {
+  flex: 1;
+}
+
+.item-card-list,
+.herb-card-list,
+.banked-paste-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+}

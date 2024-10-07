@@ -33,7 +33,7 @@ function ChosenItemsSummary({ selectedItems, rewardsData, updateItemTotals }) {
     <div className="chosen-items-summary">
       <h3>Selected Items:</h3>
       {Object.keys(selectedItems).length === 0 ? (
-        <p>No items selected yet.</p>
+        <p className="grey-text">No items selected yet.</p>
       ) : (
         <>
           <SelectedItemsList

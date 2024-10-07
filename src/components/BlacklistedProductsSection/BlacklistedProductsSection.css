@@ -42,6 +42,11 @@
   border-radius: 5px;
 }
 
+.blacklisted-product-item > button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
 .product-info {
   display: flex;
   flex-direction: column;
