@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/mixology-calculator-osrs/static/css/main.1c6c5e39.css",
+    "main.js": "/mixology-calculator-osrs/static/js/main.e8215648.js",
+    "static/js/453.c10241b8.chunk.js": "/mixology-calculator-osrs/static/js/453.c10241b8.chunk.js",
+    "static/media/pattern-4-min.png": "/mixology-calculator-osrs/static/media/pattern-4-min.88e4fe34c1f4fec1f768.png",
+    "static/media/sprite-sheet.png": "/mixology-calculator-osrs/static/media/sprite-sheet.6cb3092e2796f3cc7194.png",
+    "index.html": "/mixology-calculator-osrs/index.html",
+    "main.1c6c5e39.css.map": "/mixology-calculator-osrs/static/css/main.1c6c5e39.css.map",
+    "main.e8215648.js.map": "/mixology-calculator-osrs/static/js/main.e8215648.js.map",
+    "453.c10241b8.chunk.js.map": "/mixology-calculator-osrs/static/js/453.c10241b8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c6c5e39.css",
+    "static/js/main.e8215648.js"
+  ]
+}
