@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/mixology-calculator-osrs/static/css/main.2cc5c9c6.css",
-    "main.js": "/mixology-calculator-osrs/static/js/main.1a16c722.js",
+    "main.css": "/mixology-calculator-osrs/static/css/main.83a9f141.css",
+    "main.js": "/mixology-calculator-osrs/static/js/main.372c3fc6.js",
     "static/js/453.c10241b8.chunk.js": "/mixology-calculator-osrs/static/js/453.c10241b8.chunk.js",
     "static/media/pattern-4-min.png": "/mixology-calculator-osrs/static/media/pattern-4-min.88e4fe34c1f4fec1f768.png",
     "static/media/sprite-sheet.png": "/mixology-calculator-osrs/static/media/sprite-sheet.6cb3092e2796f3cc7194.png",
     "index.html": "/mixology-calculator-osrs/index.html",
-    "main.2cc5c9c6.css.map": "/mixology-calculator-osrs/static/css/main.2cc5c9c6.css.map",
-    "main.1a16c722.js.map": "/mixology-calculator-osrs/static/js/main.1a16c722.js.map",
+    "main.83a9f141.css.map": "/mixology-calculator-osrs/static/css/main.83a9f141.css.map",
+    "main.372c3fc6.js.map": "/mixology-calculator-osrs/static/js/main.372c3fc6.js.map",
     "453.c10241b8.chunk.js.map": "/mixology-calculator-osrs/static/js/453.c10241b8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2cc5c9c6.css",
-    "static/js/main.1a16c722.js"
+    "static/css/main.83a9f141.css",
+    "static/js/main.372c3fc6.js"
   ]
 }
